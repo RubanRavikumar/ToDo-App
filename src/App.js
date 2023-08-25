@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import React, {useLayoutEffect } from "react";
+import Todo from "./Pages/Todo";
+import { Routes, Route, Link } from "react-router-dom";
 function App() {
+   useLayoutEffect(() => {
+    console.log("Layout Effect");
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h1">Navbar</span>
+          <ul className="nav">
+            <Link to="/todo" className="nav-item">
+              <p>Todo App</p>
+            </Link>
+          </ul>
+        </div>
+      </nav>
+
+      <Routes>
+        <Route path="/todo" Component={Todo} />
+      </Routes>
     </div>
   );
 }
